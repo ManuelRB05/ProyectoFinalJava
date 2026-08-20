@@ -1,3 +1,11 @@
+package app;
+
+import model.Classes;
+import model.Student;
+import model.Teacher;
+import model.TeacherFullTime;
+import model.TeacherPartTime;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 

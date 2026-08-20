@@ -1,3 +1,5 @@
+package model;
+
 public class Student {
     private static Integer idCounter = 0;
     private Integer id;

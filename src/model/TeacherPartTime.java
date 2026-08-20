@@ -1,3 +1,5 @@
+package model;
+
 public class TeacherPartTime extends Teacher{
     private Integer activeHoursWeek;
 

@@ -1,3 +1,5 @@
+package model;
+
 public class TeacherFullTime extends Teacher{
     private Integer experienceYears;
 
@@ -8,7 +10,7 @@ public class TeacherFullTime extends Teacher{
 
     @Override
     public Double calculateSalary(){
-        return baseSalary * (1.10 + experienceYears);
+        return baseSalary * (1.10 * experienceYears);
     }
     public Integer getExperienceYears(){
         return experienceYears;
