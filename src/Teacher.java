@@ -1,14 +1,19 @@
 public abstract class Teacher {
-    String name;
-    Double salary;
-    Boolean isFullTime;
+    protected String name;
+    protected Double baseSalary;
 
-    public Teacher(String name, Double salary){
+    public Teacher(String name, Double baseSalary){
         this.name = name;
-        this.salary = salary;
+        this.baseSalary = baseSalary;
     }
 
-    abstract void FullTimeTeacher();
+    public abstract Double calculateSalary();
 
-    abstract void MidTimeTeacher();
+    public String getName(){
+        return name;
+    }
+
+    public Double getBaseSalary(){
+        return baseSalary;
+    }
 }
