@@ -1,16 +1,18 @@
 public class Student {
+    private static Integer idCounter = 0;
     private Integer id;
     private String name;
     private Integer age;
 
-    public Student(Integer id, String name, Integer age){
-        this.id = id;
+    public Student(String name, Integer age){
+        idCounter += 1;
+        this.id = idCounter;
         this.name = name;
         this.age = age;
     }
 
     public Integer getId(){
-        return this.id;
+        return id;
     }
     public String getName(){
         return this.name;
