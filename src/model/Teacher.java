@@ -18,4 +18,9 @@ public abstract class Teacher {
     public Double getBaseSalary(){
         return baseSalary;
     }
+
+    @Override
+    public String toString(){
+        return getName();
+    }
 }

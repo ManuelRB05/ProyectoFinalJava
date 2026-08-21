@@ -22,4 +22,9 @@ public class Student {
     public Integer getAge(){
         return this.age;
     }
+
+    @Override
+    public String toString(){
+        return getName();
+    }
 }

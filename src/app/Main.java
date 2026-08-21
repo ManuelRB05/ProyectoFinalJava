@@ -45,7 +45,7 @@ public class Main {
         studentsList.add(student5);
         studentsList.add(student6);
 
-        /* Clases inicializadas */
+        /* Clases inicializadas y añadir estudiantes */
 
         Classes class1 = new Classes("Quimica general", 203, teacher1);
         Classes class2 = new Classes("POO", 203, teacher3);
@@ -56,6 +56,15 @@ public class Main {
         classesList.add(class2);
         classesList.add(class3);
         classesList.add(class4);
+
+        class1.addStudent(student1);
+        class1.addStudent(student3);
+
+        class2.addStudent(student2);
+        class2.addStudent(student4);
+
+        class3.addStudent(student5);
+        class4.addStudent(student6);
 
         Scanner sc = new Scanner(System.in);
 
@@ -81,6 +90,14 @@ public class Main {
             else if (option == 2){
                 for (int i = 0; i < classesList.size(); i++){
                     System.out.println(i + 1 + ". " + "Clase: " + classesList.get(i).getName() + ", salon: " + classesList.get(i).getClassroom());
+                }
+                System.out.println("\n--------- Seleccione una clase para ver su infomracion: ---------\n");
+                int classSelected = sc.nextInt();
+                if (classSelected >= 1 && classSelected  <= classesList.size()){
+                    System.out.println("Profesor: " + classesList.get(classSelected-1).getTeacher().toString() + ". Estudiantes: " + classesList.get(classSelected-1).getStudents().toString());
+                }
+                else {
+                    System.out.println("Esa clase no existe");
                 }
             }
         }
