@@ -48,9 +48,9 @@ public class Main {
         /* Clases inicializadas y añadir estudiantes */
 
         Classes class1 = new Classes("Quimica general", 203, teacher1);
-        Classes class2 = new Classes("POO", 203, teacher3);
-        Classes class3 = new Classes("IA", 203, teacher2);
-        Classes class4 = new Classes("Ingles", 203, teacher4);
+        Classes class2 = new Classes("POO", 504, teacher3);
+        Classes class3 = new Classes("IA", 202, teacher2);
+        Classes class4 = new Classes("Ingles", 607, teacher4);
 
         classesList.add(class1);
         classesList.add(class2);
@@ -98,6 +98,23 @@ public class Main {
                 }
                 else {
                     System.out.println("Esa clase no existe");
+                }
+            }
+            else if (option == 3){
+                System.out.println("Ingrese el nombre del estudiante: ");
+                String studentName = sc.nextLine();
+                System.out.println("Ingrese la edad del estudiante: ");
+                Integer studentAge = sc.nextInt();
+                System.out.println("Ingrese el numero de la clase para el estudiante: ");
+                Integer studentClass = sc.nextInt();
+
+                Student newStudent = new Student(studentName, studentAge);
+                if (studentClass >= 1 && studentClass <= classesList.size()){
+                    classesList.get(studentClass-1).addStudent(newStudent);
+                    studentsList.add(newStudent);
+                }
+                else {
+                    System.out.println("La clase que selecciono no existe");
                 }
             }
         }
