@@ -68,7 +68,7 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
 
-        while (!exit){
+        while (!exit) {
             System.out.println("\n--------- Sistema Universitario, seleccione una opcion ---------\n" +
                     "1. Listar profesores\n" +
                     "2. Listar clases\n" +
@@ -81,26 +81,23 @@ public class Main {
             int option = sc.nextInt();
             sc.nextLine();
 
-            if (option == 1){
-                for (int i = 0; i < teachersList.size(); i++){
+            if (option == 1) {
+                for (int i = 0; i < teachersList.size(); i++) {
                     System.out.println(i + 1 + ". " + "Nombre: " + teachersList.get(i).getName() + ", " +
-                            "salario calculado: " + String.format(new Locale("es","ES"), "%,.0f", teachersList.get(i).calculateSalary()));
+                            "salario calculado: " + String.format(new Locale("es", "ES"), "%,.0f", teachersList.get(i).calculateSalary()));
                 }
-            }
-            else if (option == 2){
-                for (int i = 0; i < classesList.size(); i++){
+            } else if (option == 2) {
+                for (int i = 0; i < classesList.size(); i++) {
                     System.out.println(i + 1 + ". " + "Clase: " + classesList.get(i).getName() + ", salon: " + classesList.get(i).getClassroom());
                 }
                 System.out.println("\n--------- Seleccione una clase para ver su infomracion: ---------\n");
                 int classSelected = sc.nextInt();
-                if (classSelected >= 1 && classSelected  <= classesList.size()){
-                    System.out.println("Profesor: " + classesList.get(classSelected-1).getTeacher().toString() + ". Estudiantes: " + classesList.get(classSelected-1).getStudents().toString());
-                }
-                else {
+                if (classSelected >= 1 && classSelected <= classesList.size()) {
+                    System.out.println("Profesor: " + classesList.get(classSelected - 1).getTeacher().toString() + ". Estudiantes: " + classesList.get(classSelected - 1).getStudents().toString());
+                } else {
                     System.out.println("Esa clase no existe");
                 }
-            }
-            else if (option == 3){
+            } else if (option == 3) {
                 System.out.println("Ingrese el nombre del estudiante: ");
                 String studentName = sc.nextLine();
                 System.out.println("Ingrese la edad del estudiante: ");
@@ -109,15 +106,13 @@ public class Main {
                 Integer studentClass = sc.nextInt();
 
                 Student newStudent = new Student(studentName, studentAge);
-                if (studentClass >= 1 && studentClass <= classesList.size()){
-                    classesList.get(studentClass-1).addStudent(newStudent);
+                if (studentClass >= 1 && studentClass <= classesList.size()) {
+                    classesList.get(studentClass - 1).addStudent(newStudent);
                     studentsList.add(newStudent);
-                }
-                else {
+                } else {
                     System.out.println("La clase que selecciono no existe");
                 }
-            }
-            else if (option == 4){
+            } else if (option == 4) {
                 System.out.println("Ingrese el nombre de la clase: ");
                 String className = sc.nextLine();
                 System.out.println("Ingrese el numero del salon para la clase: ");
@@ -125,36 +120,53 @@ public class Main {
                 System.out.println("Ingrese el numero en lista del profesor para esta clase: ");
                 Integer classTeacher = sc.nextInt();
 
-                if (classTeacher >= 1 && classTeacher <= teachersList.size()){
-                    Classes newClass = new Classes(className, classClassroom, teachersList.get(classTeacher-1));
+                if (classTeacher >= 1 && classTeacher <= teachersList.size()) {
+                    Classes newClass = new Classes(className, classClassroom, teachersList.get(classTeacher - 1));
                     classesList.add(newClass);
 
-                    for (int i = 0; i < studentsList.size(); i++){
-                        System.out.println("ID: " + studentsList.get(i).getId() + ". Nombre: "+ studentsList.get(i).toString());
+                    for (int i = 0; i < studentsList.size(); i++) {
+                        System.out.println("ID: " + studentsList.get(i).getId() + ". Nombre: " + studentsList.get(i).toString());
                     }
 
                     System.out.println("\nIngrese el ID del estudiante para añadirlo a la clase: ");
                     Integer classStudent = sc.nextInt();
 
                     Student foundStudent = null;
-                    for (int i = 0; i < studentsList.size(); i++){
-                        if (studentsList.get(i).getId().equals(classStudent)){
+                    for (int i = 0; i < studentsList.size(); i++) {
+                        if (studentsList.get(i).getId().equals(classStudent)) {
                             foundStudent = studentsList.get(i);
                             break;
                         }
                     }
-                    if (foundStudent != null){
+                    if (foundStudent != null) {
                         newClass.addStudent(foundStudent);
-                    }
-                    else {
+                    } else {
                         System.out.println("No existe un estudiante en la lista con ese ID");
                     }
-                }
-                else {
+                } else {
                     System.out.println("El profesor ingresado no existe");
                 }
+            } else if (option == 5) {
+                for (int i = 0; i < studentsList.size(); i++) {
+                    System.out.println("ID: " + studentsList.get(i).getId() + ". Nombre: " + studentsList.get(i).toString());
+                }
+                System.out.println("Escriba el ID del estudiante para buscar las clases a las que pertenece: \n");
+                Integer searchIdStudent = sc.nextInt();
+
+                for (int i = 0; i < classesList.size(); i++) {
+                    for (int j = 0; j < classesList.get(i).getStudents().size(); j++) {
+                        if (classesList.get(i).getStudents().get(j).getId().equals(searchIdStudent)) {
+                            System.out.println("Numero de clase: " + i + 1 + ". Clase: " + classesList.get(i).getName() + ", salon: " + classesList.get(i).getClassroom());
+                            break;
+                        }
+                    }
+                }
+            } else if (option == 6) {
+                exit = true;
+            }
+            else {
+                System.out.println("Opcion no disponible");
             }
         }
-        
     }
 }
