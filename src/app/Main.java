@@ -117,6 +117,43 @@ public class Main {
                     System.out.println("La clase que selecciono no existe");
                 }
             }
+            else if (option == 4){
+                System.out.println("Ingrese el nombre de la clase: ");
+                String className = sc.nextLine();
+                System.out.println("Ingrese el numero del salon para la clase: ");
+                Integer classClassroom = sc.nextInt();
+                System.out.println("Ingrese el numero en lista del profesor para esta clase: ");
+                Integer classTeacher = sc.nextInt();
+
+                if (classTeacher >= 1 && classTeacher <= teachersList.size()){
+                    Classes newClass = new Classes(className, classClassroom, teachersList.get(classTeacher-1));
+                    classesList.add(newClass);
+
+                    for (int i = 0; i < studentsList.size(); i++){
+                        System.out.println("ID: " + studentsList.get(i).getId() + ". Nombre: "+ studentsList.get(i).toString());
+                    }
+
+                    System.out.println("\nIngrese el ID del estudiante para añadirlo a la clase: ");
+                    Integer classStudent = sc.nextInt();
+
+                    Student foundStudent = null;
+                    for (int i = 0; i < studentsList.size(); i++){
+                        if (studentsList.get(i).getId().equals(classStudent)){
+                            foundStudent = studentsList.get(i);
+                            break;
+                        }
+                    }
+                    if (foundStudent != null){
+                        newClass.addStudent(foundStudent);
+                    }
+                    else {
+                        System.out.println("No existe un estudiante en la lista con ese ID");
+                    }
+                }
+                else {
+                    System.out.println("El profesor ingresado no existe");
+                }
+            }
         }
         
     }
