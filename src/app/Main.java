@@ -150,7 +150,7 @@ public class Main {
                 for (int i = 0; i < studentsList.size(); i++) {
                     System.out.println("ID: " + studentsList.get(i).getId() + ". Nombre: " + studentsList.get(i).toString());
                 }
-                System.out.println("Escriba el ID del estudiante para buscar las clases a las que pertenece: \n");
+                System.out.println("Escriba el ID del estudiante para buscar las clases a las que pertenece: ");
                 Integer searchIdStudent = sc.nextInt();
 
                 for (int i = 0; i < classesList.size(); i++) {
